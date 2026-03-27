@@ -1,0 +1,198 @@
+[gd_scene format=3 uid="uid://cu8fu153b1acd"]
+
+[ext_resource type="Script" uid="uid://ciqp4s5ubmd8a" path="res://stol_gry.gd" id="1_ufy4j"]
+[ext_resource type="Texture2D" uid="uid://c7negpqbedwt6" path="res://stol.jpg" id="2_onr75"]
+[ext_resource type="AudioStream" uid="uid://b7vlk8yiewv6y" path="res://DzwiekZetonu.mp3" id="3_seb48"]
+[ext_resource type="AudioStream" uid="uid://odwmxr73ylcc" path="res://dziwiekkarty.mp3" id="4_onr75"]
+
+[node name="StolGry" type="Node2D" unique_id=991749212]
+script = ExtResource("1_ufy4j")
+
+[node name="tlo" type="TextureRect" parent="." unique_id=2114188088]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 1992.0
+offset_bottom = 1128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_onr75")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="tloKrupiera" type="ColorRect" parent="." unique_id=957196784]
+visible = false
+offset_left = 864.0
+offset_top = 128.0
+offset_right = 1160.0
+offset_bottom = 294.0
+color = Color(2.9669056e-07, 0.31436488, 0.3143649, 0.6431373)
+
+[node name="tloGracza" type="ColorRect" parent="." unique_id=1110418654]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+offset_left = 512.0
+offset_top = 840.0
+offset_right = 746.0
+offset_bottom = 998.0
+color = Color(2.9669056e-07, 0.31436488, 0.3143649, 0.6431373)
+
+[node name="tloGraczaSplit" type="ColorRect" parent="." unique_id=1928640150]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+offset_left = 1272.0
+offset_top = 776.0
+offset_right = 1506.0
+offset_bottom = 934.0
+color = Color(2.9669056e-07, 0.31436488, 0.3143649, 0.6431373)
+
+[node name="kartyKrupiera" type="HBoxContainer" parent="." unique_id=284648429]
+offset_left = 864.0
+offset_top = 120.0
+offset_right = 1148.0
+offset_bottom = 291.0
+
+[node name="kartyGracza" type="HBoxContainer" parent="." unique_id=424482469]
+offset_left = 392.0
+offset_top = 848.0
+offset_right = 616.0
+offset_bottom = 978.0
+
+[node name="kartyGraczaSplit" type="HBoxContainer" parent="." unique_id=850468708]
+offset_left = 1368.0
+offset_top = 856.0
+offset_right = 1640.0
+offset_bottom = 994.0
+
+[node name="dobierzKarte" type="Button" parent="." unique_id=781242838]
+offset_left = 1696.0
+offset_top = 848.0
+offset_right = 1903.0
+offset_bottom = 960.0
+theme_override_font_sizes/font_size = 31
+text = "dobierz karte"
+
+[node name="pass" type="Button" parent="." unique_id=498943385]
+offset_left = 1696.0
+offset_top = 728.0
+offset_right = 1904.0
+offset_bottom = 827.0
+theme_override_font_sizes/font_size = 30
+text = "pass"
+
+[node name="nowaGra" type="Button" parent="." unique_id=1943344621]
+offset_left = 1720.0
+offset_top = 408.0
+offset_right = 1889.0
+offset_bottom = 526.0
+theme_override_font_sizes/font_size = 23
+text = "nowa gra
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="kasa" type="Label" parent="." unique_id=534210518]
+offset_left = 1504.0
+offset_top = 584.0
+offset_right = 1718.0
+offset_bottom = 639.0
+theme_override_font_sizes/font_size = 40
+text = "kasa:1000$"
+
+[node name="stawka" type="Label" parent="." unique_id=1018335304]
+offset_left = 848.0
+offset_top = 624.0
+offset_right = 1152.0
+offset_bottom = 701.0
+theme_override_colors/font_color = Color(0.6531132, 0.74771565, 0.8978407, 1)
+theme_override_font_sizes/font_size = 38
+text = "stawka:0$"
+
+[node name="zeton50" type="Button" parent="." unique_id=1562934290]
+offset_left = 1720.0
+offset_top = 304.0
+offset_right = 1890.0
+offset_bottom = 395.0
+theme_override_font_sizes/font_size = 23
+text = "postaw:50$
+"
+
+[node name="podwoj" type="Button" parent="." unique_id=1659805181]
+offset_left = 72.0
+offset_top = 944.0
+offset_right = 328.0
+offset_bottom = 1056.0
+theme_override_font_sizes/font_size = 30
+text = "double down
+"
+
+[node name="split" type="Button" parent="." unique_id=884156776]
+offset_left = 72.0
+offset_top = 824.0
+offset_right = 320.0
+offset_bottom = 931.0
+theme_override_font_sizes/font_size = 46
+text = "split"
+
+[node name="punktyGracza" type="Label" parent="." unique_id=1797062910]
+offset_left = 456.0
+offset_top = 784.0
+offset_right = 680.0
+offset_bottom = 846.0
+theme_override_colors/font_color = Color(0.9687421, 0.9207354, 0.97527236, 1)
+theme_override_font_sizes/font_size = 27
+
+[node name="punktyGraczaSplit" type="Label" parent="." unique_id=1657698348]
+offset_left = 1360.0
+offset_top = 784.0
+offset_right = 1576.0
+offset_bottom = 846.0
+theme_override_font_sizes/font_size = 27
+
+[node name="komunikat" type="Label" parent="." unique_id=304667655]
+offset_left = 272.0
+offset_top = 488.0
+offset_right = 560.0
+offset_bottom = 592.0
+theme_override_colors/font_color = Color(0.80049086, 0.80049074, 0.80049074, 1)
+theme_override_font_sizes/font_size = 30
+text = "
+"
+
+[node name="punktyKrupiera" type="Label" parent="." unique_id=718360924]
+offset_left = 840.0
+offset_top = 320.0
+offset_right = 1193.0
+offset_bottom = 392.0
+theme_override_colors/font_color = Color(0.62796843, 0.5648077, 0.9075914, 1)
+theme_override_font_sizes/font_size = 32
+text = "ilosc oczek krupiera"
+
+[node name="Label" type="Label" parent="." unique_id=817884690]
+offset_left = 1504.0
+offset_top = 528.0
+offset_right = 1876.0
+offset_bottom = 629.0
+theme_override_font_sizes/font_size = 37
+text = "stawka: minimum 50$
+"
+
+[node name="kontenerZetonow" type="HBoxContainer" parent="." unique_id=1102476486]
+offset_left = 816.0
+offset_top = 736.0
+offset_right = 1488.0
+offset_bottom = 808.0
+
+[node name="DzwiekZetonu" type="AudioStreamPlayer2D" parent="." unique_id=1803802647]
+stream = ExtResource("3_seb48")
+
+[node name="DzwiekKarty" type="AudioStreamPlayer2D" parent="." unique_id=1753155046]
+stream = ExtResource("4_onr75")
+
+[connection signal="pressed" from="dobierzKarte" to="." method="gracz_dobiera"]
+[connection signal="pressed" from="pass" to="." method="_on_pass_pressed"]
+[connection signal="pressed" from="nowaGra" to="." method="_on_nowa_gra_pressed"]
+[connection signal="pressed" from="zeton50" to="." method="_on_zeton_50_pressed"]
+[connection signal="pressed" from="podwoj" to="." method="_on_podwoj_pressed"]
+[connection signal="pressed" from="split" to="." method="_on_split_pressed"]
