@@ -1,6 +1,5 @@
 extends Node2D
 
-# --- PODPINAMY WSZYSTKO ZE STOŁU ---
 @onready var pole_gracza_1 = $kartyGracza
 @onready var pole_gracza_2 = $kartyGraczaSplit 
 @onready var pole_krupiera = $kartyKrupiera
@@ -19,12 +18,10 @@ extends Node2D
 @onready var tekst_zaklad = $stawka
 @onready var tekst_komunikat = $komunikat
 
-# Podpinamy kontener na wizualne żetony leżące na stole
 @onready var kontener_zetonow = $kontenerZetonow
 @onready var dzwiek_zetonu = $DzwiekZetonu
 @onready var dzwiek_karty = $DzwiekKarty
 
-# --- PARAMETRY GRY ---
 var kasa = 1000
 var zaklad_1 = 0
 var zaklad_2 = 0 
@@ -76,7 +73,6 @@ func _on_zeton_50_pressed():
 		if dzwiek_zetonu:
 			dzwiek_zetonu.play()
 		
-		# --- Tworzenie wizualnego żetonu na stole ---
 		var nowy_zeton = TextureRect.new()
 		nowy_zeton.texture = load("res://Zeton50.png") 
 		nowy_zeton.custom_minimum_size = Vector2(100, 100)
@@ -145,7 +141,6 @@ func sprawdz_startowe_opcje():
 	przycisk_pass.disabled = false
 	if kasa >= zaklad_1: przycisk_podwoj.disabled = false
 	
-	# Mądrzejszy Split - sprawdzamy punkty obu kart
 	if reka_gracza_1.size() == 2 and kasa >= zaklad_1:
 		var p1 = reka_gracza_1[0]["punkty"]
 		var p2 = reka_gracza_1[1]["punkty"]
@@ -162,19 +157,12 @@ func _on_split_pressed():
 		aktualizuj_hajs()
 		var ile_zetonow = int(zaklad_1 / 50)
 		
-		# W pętli tworzymy dokładnie tyle samo nowych wizualnych żetonów.
-		# HBoxContainer automatycznie ułoży je obok siebie, tworząc długi stos.
 		for i in range(ile_zetonow):
 			var nowy_zeton = TextureRect.new()
-			# Upewnij się, że nazwa pliku jest prawidłowa! (np. TWOJA_NOWA_NAZWA_ZETONU.png)
 			nowy_zeton.texture = load("res://Zeton50.png") 
-			
-			# Używamy Twojego masywnego, powiększonego rozmiaru (np. 80, 80)
 			nowy_zeton.custom_minimum_size = Vector2(100, 100)
 			nowy_zeton.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 			nowy_zeton.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-			
-			# Dodajemy żeton do kontenera - wskoczy obok poprzednich!
 			kontener_zetonow.add_child(nowy_zeton)
 		
 		var karta = reka_gracza_1.pop_back()
@@ -191,7 +179,6 @@ func _on_split_pressed():
 		tekst_komunikat.text = "SPLIT! Ruch: Lewa Ręka"
 		aktualizuj_teksty_punktow()
 		sprawdz_punkty_aktywnej_reki()
-
 
 func gracz_dobiera():
 	przycisk_podwoj.disabled = true 
@@ -226,7 +213,6 @@ func zakoncz_runde_gracza():
 	else:
 		tura_krupiera()
 
-# --- TURY KRUPIERA Z PAUZAMI ---
 func tura_krupiera():
 	await get_tree().create_timer(0.8).timeout
 	rozdaj_karte(reka_krupiera, pole_krupiera)
@@ -255,8 +241,6 @@ func rozzlicz_gre():
 	aktualizuj_hajs()
 	przycisk_nowagra.disabled = false
 	
-	
-	# Czyszczenie wizualnych żetonów ze stołu żeby można było obstawić na nową rundę
 	for zeton in kontener_zetonow.get_children():
 		zeton.queue_free()
 
@@ -302,12 +286,9 @@ func _on_podwoj_pressed():
 		zaklad_1 *= 2
 		aktualizuj_hajs()
 		
-		
 		for i in range(ile_zetonow):
 			var nowy_zeton = TextureRect.new()
 			nowy_zeton.texture = load("res://Zeton50.png") 
-			
-			# Zostawiłem Twój rozmiar 100x100 z poprzedniego kodu
 			nowy_zeton.custom_minimum_size = Vector2(100, 100)
 			nowy_zeton.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 			nowy_zeton.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -322,27 +303,12 @@ func _on_podwoj_pressed():
 		if policz_punkty(reka_gracza_1) > 21: rozzlicz_gre()
 		else: tura_krupiera()
 
-# --- MECHANIKA KART ---
-#func generuj_talie():
-	#talia.clear()
-	#for kolor in kolory:
-		#for figura in figury:
-			#var pk = 11 if figura == "A" else (10 if figura in ["J", "Q", "K"] else int(figura))
-			#var nf = "0" + figura if figura in ["2", "3", "4", "5", "6", "7", "8", "9"] else figura
-			#var img = "res://Cards/card_" + kolor.to_lower() + "_" + nf + ".png"
-			#talia.append({"figura": figura, "punkty": pk, "obrazek": img})
-#
-#func tasuj_talie(): talia.shuffle()
 func generuj_talie():
 	talia.clear()
 	for kolor in kolory:
 		for figura in figury:
-			# Przypisywanie punktów (As to 11, figury to 10, reszta to ich wartość z liczby)
 			var pk = 11 if figura == "A" else (10 if figura in ["J", "Q", "K"] else int(figura))
-			
-			# Sklejanie nowej nazwy pliku, np. "res://Cards/CardClubs2.png"
 			var img = "res://Cards/Card" + kolor + figura + ".png"
-			
 			talia.append({"figura": figura, "punkty": pk, "obrazek": img})
 
 func tasuj_talie(): talia.shuffle()
