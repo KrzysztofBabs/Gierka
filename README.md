@@ -16,11 +16,6 @@ W pełni grywalna symulacja klasycznej gry w oczko (Blackjack) stworzona w silni
 - **Silnik:** Godot Engine 4.x
 - **Język programowania:** GDScript
 
-## 🚀 Jak zagrać
-1. Skopiuj to repozytorium na swój komputer (przez `git clone` lub pobierając plik ZIP).
-2. Pobierz i zainstaluj edytor [Godot Engine 4](https://godotengine.org/).
-3. Otwórz edytor Godot, wybierz opcję **Import** i wskaż plik `project.godot` z tego folderu.
-4. Uruchom grę wciskając klawisz **F5** (lub przycisk Play w prawym górnym rogu).
 
 ## 💡 Zasady gry
 * Rozpocznij rundę klikając żeton w prawym dolnym rogu (każde kliknięcie zwiększa pulę o 50$).
